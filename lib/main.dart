@@ -32,21 +32,23 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     authService.getUserData(context);
+
   }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E-commerce-app',
+
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Declarations.backgroundColor
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home:
-      Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type=='user'
-          ? const UserScreen()
+      Provider.of<UserProvider>(context,listen: false).user.token.isNotEmpty ?
+      Provider.of<UserProvider>(context).user.type=='user' ?
+           const UserScreen()
           : const AdminScreen()
           : const AuthScreen()
     );

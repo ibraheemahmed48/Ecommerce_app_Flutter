@@ -3,6 +3,8 @@ import 'package:ecommerce_app/app/widgets/custem_textF.dart';
 import 'package:ecommerce_app/components/declarations.dart';
 import 'package:ecommerce_app/components/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/user_provider.dart';
 import '../widgets/custom_button.dart';
 
 enum AuthEnum {
@@ -27,6 +29,17 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _namelText = TextEditingController();
   final TextEditingController _passwordlText = TextEditingController();
   final AuthService authService = AuthService();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 3),(){
+      print("AuthScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
+
+    });
+
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose

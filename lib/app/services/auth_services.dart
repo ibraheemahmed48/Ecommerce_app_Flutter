@@ -9,14 +9,16 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/error_handling.dart';
+import '../screens/Admin/admin_screen.dart';
 import '../screens/User/user_screen.dart';
+import '../screens/auth_screen.dart';
 
 class AuthService {
   void singUpUser(
       {required String email,
-      required String password,
-      required String name,
-      required BuildContext context}) async {
+        required String password,
+        required String name,
+        required BuildContext context}) async {
     print("**************************singUpUser");
     try {
       User user = User(
@@ -45,8 +47,8 @@ class AuthService {
 
   void singInUser(
       {required String email,
-      required String password,
-      required BuildContext context}) async {
+        required String password,
+        required BuildContext context}) async {
     print("**************************singInUser");
     try {
       http.Response response = await http.post(Uri.parse("$urlDb/api/signin"),
@@ -59,13 +61,14 @@ class AuthService {
           context: context,
           onSuccess: () async {
             SharedPreferences preferences =
-                await SharedPreferences.getInstance();
-            Provider.of<UserProvider>(context, listen: false)
-                .setUser(response.body);
-            await preferences.setString(
-                "myApp", jsonDecode(response.body)["token"]);
+            await SharedPreferences.getInstance();
+            Provider.of<UserProvider>(context, listen: false).setUser(response.body);
+            await preferences.setString("myApp", jsonDecode(response.body)["token"]);
+
             Navigator.pushNamedAndRemoveUntil(
-                context, UserScreen.routeName, (route) => false);
+                context,
+                UserScreen.routeName, (route) => false);
+
           });
     } catch (e) {
       showSnackBar(context, e.toString());
@@ -73,26 +76,33 @@ class AuthService {
   }
 
   Future<void> getUserData(BuildContext context) async {
+    print("getUserData ");
     try {
       SharedPreferences sp = await SharedPreferences.getInstance();
       String? token = sp.getString('myApp');
+      print("token ${token}");
       if (token == null) {
+        print("222222222222222222");
+
         sp.setString('myApp', '');
       }
       var resToken = await http.post(Uri.parse("$urlDb/isValidToken"),
-          headers: <String, String>{
+          headers: {
             'Content-Type': 'application/json; charset=utf-8',
             'myApp': token!
           });
+
       var res1 = jsonDecode(resToken.body);
       if (res1 == true) {
         http.Response userRes = await http.get(Uri.parse("$urlDb/"),
-            headers: <String, String>{
+            headers: {
               'Content-Type': 'application/json; charset=utf-8',
-              'myApp': token
+              'myApp': token!
             });
         var userProvider = Provider.of<UserProvider>(context, listen: false);
+        print("userRes ${userRes.body}");
         userProvider.setUser(userRes.body);
+        print("userProvider ${userProvider.user.type}");
       }
     } catch (e) {
       showSnackBar(context, e.toString());

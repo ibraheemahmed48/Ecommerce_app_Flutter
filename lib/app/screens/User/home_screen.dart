@@ -1,6 +1,8 @@
+import 'package:ecommerce_app/app/screens/User/search_screen.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../components/declarations.dart';
 import '../../widgets/addresbar.dart';
@@ -16,9 +18,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void searchForProduct(String text){
+    Navigator.pushNamed(context, SearchScreen.routeName,arguments: text);
+  }
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
+
+
     return  Scaffold(
       appBar:PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -39,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      onFieldSubmitted:searchForProduct,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: (){},

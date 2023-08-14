@@ -4,10 +4,15 @@ import 'package:flutter/material.dart';
 class CustemText extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
+  final int maxline;
 
 
 
-  const CustemText({Key? key, required this.controller, required this.hintText}) : super(key: key);
+  const CustemText({Key? key,
+    required this.controller,
+    required this.hintText,
+     this.maxline = 1
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +40,7 @@ class CustemText extends StatelessWidget {
 
 
       },
+      maxLines: maxline,
 
     );
   }

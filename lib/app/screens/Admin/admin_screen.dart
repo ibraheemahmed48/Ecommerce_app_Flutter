@@ -1,7 +1,14 @@
+import 'package:ecommerce_app/app/screens/Admin/post_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../components/declarations.dart';
+import 'package:http/http.dart' as http;
+
+import '../../../providers/user_provider.dart';
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
+  static const String routeName = "admin-Screen";
+
 
   @override
   State<AdminScreen> createState() => _AdminScreenState();
@@ -11,7 +18,7 @@ class _AdminScreenState extends State<AdminScreen> {
   int _page=0;
   double nWidth = 42;
   List<Widget> pages = [
-    const Center(child: Text("Post page"),),
+    const PostScreen(),
     const Center(child: Text("Analytics Page"),),
 
     const Center(child: Text("Items Page"),)
@@ -23,6 +30,15 @@ class _AdminScreenState extends State<AdminScreen> {
       _page = page;
     });
 
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(const Duration(seconds: 3),(){
+      print("AdminScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
+
+    });
   }
   @override
   Widget build(BuildContext context) {

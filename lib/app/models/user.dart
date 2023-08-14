@@ -46,13 +46,13 @@ class User{
 
   factory User.fromMap(Map<String, dynamic> json) {
     return User(
-      id: json["_id"],
-      name: json["name"],
-      email: json["email"],
-      password: json["password"],
-      address: json["address"],
-      type: json["type"],
-      token: json["token"],
+      id: json["_id"] ??"",
+      name: json["name"] ??"",
+      email: json["email"] ??"",
+      password: json["password"] ??"",
+      address: json["address"] ??"",
+      type: json["type"] ??"",
+      token: json["token"] ??"",
     );
   }
 

@@ -41,6 +41,9 @@ dependencies:
   badges: ^3.1.1
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
+  dotted_border: ^2.0.0+3
+  file_picker: ^5.3.3
+  cloudinary_public: ^0.21.0
 
 dev_dependencies:
   flutter_test:

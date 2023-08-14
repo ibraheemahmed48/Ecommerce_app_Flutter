@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/app/screens/User/home_screen.dart';
 import 'package:ecommerce_app/components/declarations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../providers/user_provider.dart';
 import 'account_screen.dart';
 class UserScreen extends StatefulWidget {
   static const String routeName = "/bar-home";
@@ -25,6 +27,15 @@ class _UserScreenState extends State<UserScreen> {
       _page = page;
     });
 
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 3),(){
+      print("UserScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
+
+    });
   }
   @override
   Widget build(BuildContext context) {
