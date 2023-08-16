@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../components/declarations.dart';
-import '../../../components/utils.dart';
 import '../../models/product.dart';
 import '../../services/home_services.dart';
 import '../../widgets/loader.dart';
+import '../../widgets/product_card.dart';
 
 class CategoryDealScreen extends StatefulWidget {
   static const String routeName ='/Category-Deal';
@@ -38,9 +38,6 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
 
     });
   }
-
-
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -75,55 +72,7 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
           ),
           itemBuilder: (context , index){
             final product = productList![index];
-            return Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height/6,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          border:  Border.all(
-                              width: 1.5,
-                              color: Colors.black12
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white
-                      ),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width/2,
-                        padding: const EdgeInsets.all(10),
-                        child: FadeInImage.assetNetwork(
-                          placeholder: 'assets/images/logo.png',
-                          image:  product.images[0],
-                          fit: BoxFit.fitHeight,
-
-                        ),
-                      ),
-                    ),
-
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Text(product.name,
-                          overflow: TextOverflow.ellipsis,),
-                      ),
-                    ),
-                    Text('${product.price} IQD',
-                    style: const TextStyle(
-                  fontWeight: FontWeight.bold
-                    ),
-                    )
-                   
-                  ],
-                )
-              ],
-            );
+            return ProductCard(product: product, isLiked: false,);
           }
       ):const Center(child: Text("NO DATA")),
     );

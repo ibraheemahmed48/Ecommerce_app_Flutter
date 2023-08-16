@@ -54,7 +54,7 @@ class Declarations{
 
 
   static const List carouselImages = [
-    "http://via.placeholder.com/500x300/A2FF00/FFF",
+    "http://via.placeholder.com/500x300/FFFC00/FFF",
     "http://via.placeholder.com/500x300/FFFC00/FFF",
     "http://via.placeholder.com/500x300/293BB9/FFF",
     "http://via.placeholder.com/500x300/FF0000/FFF",

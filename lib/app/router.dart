@@ -1,10 +1,13 @@
 import 'package:ecommerce_app/app/screens/Admin/add_product.dart';
 import 'package:ecommerce_app/app/screens/User/category_deal_screen.dart';
+import 'package:ecommerce_app/app/screens/User/product_details_screen.dart';
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
 import 'package:ecommerce_app/app/screens/auth_screen.dart';
 import 'package:ecommerce_app/app/screens/User/home_screen.dart';
 import 'package:ecommerce_app/app/screens/User/user_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'models/product.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -39,6 +42,13 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       var txt = routeSettings.arguments as String;
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) =>  SearchScreen(searchText: txt,));
+
+
+
+    case ProductDetailScreen.routeName:
+      var product = routeSettings.arguments as Product;
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) =>  ProductDetailScreen( product: product,));
 
 
     default:

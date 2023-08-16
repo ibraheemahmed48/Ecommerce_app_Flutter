@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-void showSnackBar(BuildContext context ,String text){
-ScaffoldMessenger.of(context).showSnackBar(
-  SnackBar(content: Text(text),)
-);
+void showSnackBar(BuildContext context, String text) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      elevation: 2,
+
+      content: Text(
+        text,
+        style: const TextStyle(
+          // Customize the text style here
+          fontSize: 16,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: Colors.grey, // Customize the background color
+      duration: const Duration(seconds: 3), // Customize the display duration
+
+    ),
+  );
 }
+
 
 
 
