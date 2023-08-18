@@ -61,9 +61,8 @@ class _UserScreenState extends State<UserScreen> {
           getNavBottom(
               icon: Icons.shopping_cart,
               title: 'Cart', index: 2,
-              ifCart: true,
+              ifCart: cartCount==0?false:true,
             cartCount: cartCount
-
           ),
 
         ],

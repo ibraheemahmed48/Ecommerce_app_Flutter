@@ -24,8 +24,7 @@ class _DealOfDayState extends State<DealOfDay> {
   }
 
   fetchCategories() async {
-    productList = await homeService.dealOfProducts(
-        context: context);
+    productList = await homeService.dealOfProducts(context: context);
     setState(() {});
     print(productList?.length);
   }

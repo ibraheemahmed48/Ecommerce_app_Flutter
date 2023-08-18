@@ -33,13 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void service() {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     if (userProvider.user.token.isNotEmpty) {
-      if (userProvider.user.type == 'user') {
         Navigator.pushNamedAndRemoveUntil(
             context, UserScreen.routeName, (route) => false);
-      } else {
-        Navigator.pushNamedAndRemoveUntil(
-            context, AdminScreen.routeName, (route) => false);
-      }
     } else {
       Navigator.pushNamedAndRemoveUntil(
           context, AuthScreen.routeName, (route) => false);

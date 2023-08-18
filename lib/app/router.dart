@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/app/screens/Admin/add_product.dart';
+import 'package:ecommerce_app/app/screens/Admin/admin_screen.dart';
 import 'package:ecommerce_app/app/screens/User/address_screen.dart';
 import 'package:ecommerce_app/app/screens/User/category_deal_screen.dart';
+import 'package:ecommerce_app/app/screens/User/order_details_screen.dart';
 import 'package:ecommerce_app/app/screens/User/product_details_screen.dart';
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
 import 'package:ecommerce_app/app/screens/auth_screen.dart';
@@ -9,6 +11,7 @@ import 'package:ecommerce_app/app/screens/User/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/app/screens/splash_screen.dart';
 
+import 'models/order.dart';
 import 'models/product.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -19,6 +22,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) => const AuthScreen());
 
+
+    case AdminScreen.routeName:
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) => const AdminScreen());
 
 
     case AddressScreen.routeName:
@@ -66,6 +73,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) =>  ProductDetailScreen( product: product,));
 
+
+    case OrderDetailsScreen.routeName:
+      var order = routeSettings.arguments as Order;
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) =>  OrderDetailsScreen( order: order,));
 
     default:
       return MaterialPageRoute(

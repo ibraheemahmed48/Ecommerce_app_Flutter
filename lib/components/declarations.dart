@@ -64,6 +64,16 @@ class Declarations{
     "http://via.placeholder.com/500x300/ABACD3/FFF",
   ];
 
+  static double checkDouble(dynamic value) {
+    if (value is int) {
+      return value.toDouble();
+    } else if (value is String) {
+      return double.parse(value);
+    } else {
+      return value;
+    }
+  }
+
 
 
 }

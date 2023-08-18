@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ecommerce_app/app/screens/auth_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:ecommerce_app/app/models/user.dart';
@@ -105,5 +106,16 @@ class AuthService {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
+  }
+
+  Future<void> logOut(BuildContext context) async {
+    try{
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      await preferences.setString('myApp', '');
+      Navigator.pushNamedAndRemoveUntil(context, AuthScreen.routeName, (route) => false);
+    }catch(e){
+      showSnackBar(context, e.toString());
+    }
+
   }
 }

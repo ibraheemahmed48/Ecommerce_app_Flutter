@@ -1,11 +1,9 @@
 import 'package:ecommerce_app/app/router.dart';
 import 'package:ecommerce_app/app/screens/splash_screen.dart';
-import 'package:ecommerce_app/app/services/auth_services.dart';
 import 'package:ecommerce_app/components/declarations.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 void main() {
   runApp(MultiProvider(

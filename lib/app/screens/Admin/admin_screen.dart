@@ -1,10 +1,9 @@
 import 'package:ecommerce_app/app/screens/Admin/post_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../../components/declarations.dart';
-import 'package:http/http.dart' as http;
-
-import '../../../providers/user_provider.dart';
+import '../../../components/utils.dart';
+import 'admin_orders_screen.dart';
+import 'analytics_screen.dart';
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
   static const String routeName = "admin-Screen";
@@ -17,29 +16,23 @@ class AdminScreen extends StatefulWidget {
 class _AdminScreenState extends State<AdminScreen> {
   int _page=0;
   double nWidth = 42;
+  String adminAppBar1="Posts" ;
   List<Widget> pages = [
     const PostScreen(),
-    const Center(child: Text("Analytics Page"),),
-
-    const Center(child: Text("Items Page"),)
-
+    const AnalyticsScreen(),
+    const AdminOrdersScreen()
   ];
 
   void _upDatePage(int page){
     setState(() {
       _page = page;
     });
+    adminAppBar1 = adminAppBar(_page);
 
   }
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.delayed(const Duration(seconds: 3),(){
-      print("AdminScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
 
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -49,10 +42,10 @@ class _AdminScreenState extends State<AdminScreen> {
               gradient: Declarations.appBarGradient
           ),
         ),
-        title: const Row(
+        title:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-              Text("Admin Penal",
+              Text("${adminAppBar1}",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white
@@ -83,7 +76,7 @@ class _AdminScreenState extends State<AdminScreen> {
             ),
             getNavBottom(
                 icon: Icons.all_inbox,
-                title: 'Items',
+                title: 'Orders',
               index: 2,
 
             ),

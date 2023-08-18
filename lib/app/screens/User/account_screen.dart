@@ -1,8 +1,7 @@
+import 'package:ecommerce_app/app/widgets/order.dart';
 import 'package:ecommerce_app/components/declarations.dart';
 import 'package:flutter/material.dart';
-
 import '../../widgets/below_appBar.dart';
-import '../../widgets/order.dart';
 import '../../widgets/top_button.dart';
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -46,19 +45,21 @@ class AccountScreen extends StatelessWidget {
             ),
           ),
       ),
-      body: const Column(
-        children: [
-          BelowAppBar(),
-          SizedBox(
-            width: 10,
-          ),
-          TopButton(),
+      body:  const SingleChildScrollView(
+        child:  Column(
+          children: [
+            BelowAppBar(),
+            SizedBox(
+              height: 10,
+            ),
+            TopButtons(),
 
-          SizedBox(
-            width: 10,
-          ),
-          Order()
-        ],
+            SizedBox(
+              width: 10,
+            ),
+            Orders()
+          ],
+        ),
       ),
     );
   }

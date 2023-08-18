@@ -4,6 +4,7 @@ import '../../../components/declarations.dart';
 import '../../../providers/user_provider.dart';
 import '../../widgets/addresbar.dart';
 import '../../widgets/cart_subtotal.dart';
+import '../../widgets/loader.dart';
 import '../../widgets/product_card_cart.dart';
 import 'address_screen.dart';
 
@@ -15,13 +16,13 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  bool isEmpty = false;
+
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
     int sum = 0;
-    user.cart
-        .map((e) => sum += e['qty'] * e['product']['price'] as int)
-        .toList();
+    user.cart.map((e) => sum += e['qty'] * e['product']['price'] as int).toList();
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -41,6 +42,8 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: Stack(
         children: [
+          user.cart.isEmpty?
+          const  Center(child: Text("NO DATA")):
           Padding(
             padding: const EdgeInsets.only(top: 40,bottom: 50),
             child: ListView.builder(
@@ -53,6 +56,10 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
           ),
+
+
+
+
           const Align(
             alignment: Alignment.topCenter,
             child: SizedBox(
@@ -64,6 +71,8 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
           ),
+
+
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(

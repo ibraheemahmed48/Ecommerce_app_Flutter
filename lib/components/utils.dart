@@ -100,5 +100,58 @@ showAlertDialog2(BuildContext context  , String textHead, String textMsg){
         return alertDialog;
       }
   );
+
+
+
+
+}
+
+
+String getStatus(int value) {
+  switch(value) {
+    case 0:
+      return "preparing";
+    case 1:
+      return "Preparing";
+    case 2:
+      return "Ready";
+    case 3:
+      return "On Way";
+    case 4:
+      return "Completed";
+    default:
+      return "preparing";
+  }
+}
+
+
+String adminAppBar(int value) {
+  switch(value) {
+    case 0:
+      return "Posts";
+    case 1:
+      return "Analytics";
+    case 2:
+      return "Orders";
+    default:
+      return "Posts";
+  }
+}
+
+Color? getStatusColor1(int value) {
+  switch(value) {
+    case 0:
+      return Colors.green;
+    case 1:
+      return Colors.blue;
+    case 2:
+      return Colors.yellowAccent;
+    case 3:
+      return Colors.deepOrange;
+    case 4:
+      return Colors.red;
+    default:
+      return Colors.green;
+  }
 }
 
