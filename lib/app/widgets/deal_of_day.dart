@@ -20,12 +20,14 @@ class _DealOfDayState extends State<DealOfDay> {
     // TODO: implement initState
     super.initState();
     fetchCategories();
+
   }
 
   fetchCategories() async {
     productList = await homeService.dealOfProducts(
         context: context);
     setState(() {});
+    print(productList?.length);
   }
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class _DealOfDayState extends State<DealOfDay> {
             style: TextStyle(fontSize: 20),),
         ),
         SizedBox(
-            height: 500,
+            height: 3*140,
             width: double.infinity,
             child: productList == null ? const Loader() : ListView.builder(
               itemCount: productList!.length,
@@ -59,6 +61,7 @@ class _DealOfDayState extends State<DealOfDay> {
         )
       ],
     );
+
   }
 }
 

@@ -35,6 +35,7 @@ class _AuthScreenState extends State<AuthScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
       print("AuthScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
+      print("AuthScreen type : ${Provider.of<UserProvider>(context,listen: false).user.type}");
 
     });
 

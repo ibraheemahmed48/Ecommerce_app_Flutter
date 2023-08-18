@@ -227,12 +227,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             label: 'Add to Cart',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
-              // productServices.addProductToCart(
-              //     context: context,
-              //     product: widget.product,
-              //     qty: 1
-              // );
-              //Navigator.pop(context);
+              productServices.addProductToCart(
+                  context: context,
+                  product: widget.product,
+                  qty: 1
+              );
             },
           ),
           SpeedDialChild(

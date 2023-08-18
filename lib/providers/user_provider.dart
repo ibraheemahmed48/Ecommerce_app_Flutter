@@ -10,4 +10,10 @@ void setUser(String user){
   notifyListeners();
 
 }
+void setObjectUser(User user){
+  _user = user;
+  notifyListeners();
+
+}
+
 }

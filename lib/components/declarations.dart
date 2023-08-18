@@ -17,6 +17,8 @@ class Declarations{
     ],
     stops: [0.5, 1.0],
   );
+  static const primaryColor = Color.fromARGB(255, 201, 29, 126);
+
   static const secondaryColor = Color.fromRGBO(162, 255, 0, 1.0);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundColor = Color(0xffabacd3);
@@ -58,7 +60,7 @@ class Declarations{
     "http://via.placeholder.com/500x300/FFFC00/FFF",
     "http://via.placeholder.com/500x300/293BB9/FFF",
     "http://via.placeholder.com/500x300/FF0000/FFF",
-    "http://via.placeholder.com/500x300/49FF00/FFF",
+    "http://via.placeholder.com/500x300/ABACD3/FFF",
     "http://via.placeholder.com/500x300/ABACD3/FFF",
   ];
 

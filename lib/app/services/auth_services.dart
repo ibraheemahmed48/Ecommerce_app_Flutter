@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:ecommerce_app/app/screens/User/home_screen.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:ecommerce_app/app/models/user.dart';
 import 'package:ecommerce_app/components/declarations.dart';
@@ -9,9 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/error_handling.dart';
-import '../screens/Admin/admin_screen.dart';
 import '../screens/User/user_screen.dart';
-import '../screens/auth_screen.dart';
 
 class AuthService {
   void singUpUser(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../providers/user_provider.dart';
 import 'account_screen.dart';
+import 'cart_screen.dart';
 class UserScreen extends StatefulWidget {
   static const String routeName = "/bar-home";
   const UserScreen({super.key});
@@ -18,7 +19,7 @@ class _UserScreenState extends State<UserScreen> {
   List<Widget> pages = [
     const HomeScreen(),
     const AccountScreen(),
-    const Center(child: Text("Cart Page"),)
+    const CartScreen()
 
   ];
 
@@ -32,13 +33,11 @@ class _UserScreenState extends State<UserScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3),(){
-      print("UserScreen name : ${Provider.of<UserProvider>(context,listen: false).user.name}");
 
-    });
   }
   @override
   Widget build(BuildContext context) {
+    final cartCount = context.watch<UserProvider>().user.cart.length;
     return  Scaffold(
       body:pages[_page] ,
       bottomNavigationBar: BottomNavigationBar(
@@ -62,7 +61,8 @@ class _UserScreenState extends State<UserScreen> {
           getNavBottom(
               icon: Icons.shopping_cart,
               title: 'Cart', index: 2,
-              ifCart: true
+              ifCart: true,
+            cartCount: cartCount
 
           ),
 
@@ -72,10 +72,11 @@ class _UserScreenState extends State<UserScreen> {
       )
     );
   }
-  BottomNavigationBarItem getNavBottom({required bool ifCart,required IconData icon, required String title ,required int index}){
+  BottomNavigationBarItem getNavBottom({required bool ifCart,required IconData icon, required String title ,
+    required int index,int cartCount= 0}){
     return BottomNavigationBarItem(icon: Badge(
       isLabelVisible: ifCart,
-      label: Text("2"),
+      label: Text(cartCount.toString()),
       child: Container(
         width: nWidth,
         decoration: BoxDecoration(

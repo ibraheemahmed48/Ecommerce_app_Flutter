@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustemText extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final int maxline;
+  final IconData? icon;
 
 
 
   const CustemText({Key? key,
     required this.controller,
     required this.hintText,
-     this.maxline = 1
+     this.maxline = 1, this.icon
   }) : super(key: key);
 
   @override
@@ -20,6 +20,7 @@ class CustemText extends StatelessWidget {
 
       controller: controller,
       decoration: InputDecoration(
+        prefixIcon: icon !=null?Icon(icon):null,
         hintText: hintText,
         border: const OutlineInputBorder(
           borderSide: BorderSide(

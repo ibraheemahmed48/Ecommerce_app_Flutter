@@ -57,7 +57,7 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                         )
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
 
@@ -72,7 +72,6 @@ class _ProductCardState extends State<ProductCard> {
                         ),
                         Text("${widget.product.price} IQD",
                           overflow:TextOverflow.ellipsis,
-
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.red

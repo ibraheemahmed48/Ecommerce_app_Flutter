@@ -1,9 +1,5 @@
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
-import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../components/declarations.dart';
 import '../../widgets/addresbar.dart';
 import '../../widgets/carousel_image.dart';
@@ -87,8 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-
-      body:   const SingleChildScrollView(
+      body:const SingleChildScrollView(
         child: Column(
           children: [
             AddressBar(),
@@ -98,7 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
             CarouselImage(),
             SizedBox(height: 10,),
             DealOfDay(),
-            SizedBox(height: 10,),
 
 
 

@@ -76,4 +76,29 @@ AlertDialog alertDialog = AlertDialog(
 }
 
 
+showAlertDialog2(BuildContext context  , String textHead, String textMsg){
+  Widget cancelButton = TextButton(
+      onPressed: (){
+        Navigator.pop(context);
+      },
+
+      child: const Text("OK")
+  );
+
+
+  AlertDialog alertDialog = AlertDialog(
+    title: Text(textHead),
+    content: Text(textMsg),
+    actions: [
+      cancelButton,
+
+    ],
+  );
+
+  showDialog(context: context,
+      builder: (BuildContext context){
+        return alertDialog;
+      }
+  );
+}
 
