@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../../../providers/user_provider.dart';
 import 'account_screen.dart';
 import 'cart_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class UserScreen extends StatefulWidget {
   static const String routeName = "/bar-home";
   const UserScreen({super.key});
@@ -49,18 +51,18 @@ class _UserScreenState extends State<UserScreen> {
         items: [
           getNavBottom(
               icon: Icons.home,
-              title: 'Home', index: 0,
+              title: AppLocalizations.of(context)!.home, index: 0,
               ifCart: false
           ),
           getNavBottom(
               icon: Icons.person,
-              title: 'Account', index: 1,
+              title: AppLocalizations.of(context)!.account, index: 1,
               ifCart: false
 
           ),
           getNavBottom(
               icon: Icons.shopping_cart,
-              title: 'Cart', index: 2,
+              title: AppLocalizations.of(context)!.cart, index: 2,
               ifCart: cartCount==0?false:true,
             cartCount: cartCount
           ),

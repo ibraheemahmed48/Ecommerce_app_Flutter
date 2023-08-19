@@ -1,10 +1,12 @@
 import 'package:ecommerce_app/app/widgets/product_card_horizontal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../models/product.dart';
 import '../screens/User/product_details_screen.dart';
 import '../services/home_services.dart';
 import 'loader.dart';
+
 class DealOfDay extends StatefulWidget {
   const DealOfDay({super.key});
 
@@ -20,7 +22,6 @@ class _DealOfDayState extends State<DealOfDay> {
     // TODO: implement initState
     super.initState();
     fetchCategories();
-
   }
 
   fetchCategories() async {
@@ -28,44 +29,68 @@ class _DealOfDayState extends State<DealOfDay> {
     setState(() {});
     print(productList?.length);
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(left: 10,top: 15),
-          child: const Text("Deal of the day",
-            style: TextStyle(fontSize: 20),),
+          alignment: AppLocalizations.of(context)!.localeName=="en"?
+             Alignment.topLeft:Alignment.topRight,
+          padding:AppLocalizations.of(context)!.localeName=="en"?
+          const EdgeInsets.only(left: 10, top: 15):
+          const EdgeInsets.only(right: 10, top: 15),
+          child:Text(
+            AppLocalizations.of(context)!.dealOfTheDay,
+            style: TextStyle(fontSize: 20),
+          ),
         ),
         SizedBox(
-            height: 3*140,
+            height: 3 * 140,
             width: double.infinity,
-            child: productList == null ? const Loader() : ListView.builder(
-              itemCount: productList!.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      ProductDetailScreen.routeName,
-                      arguments: productList![index],
-                    );
-                  },
-                  child: ProductCardHorizontal(
-                    product: productList![index],
-                  ),
-                );
-              },)
-        )
+            child: productList == null
+                ? const Loader()
+                : Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailScreen.routeName,
+                            arguments: productList![0],
+                          );
+                        },
+                        child: ProductCardHorizontal(
+                          product: productList![0],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailScreen.routeName,
+                            arguments: productList![1],
+                          );
+                        },
+                        child: ProductCardHorizontal(
+                          product: productList![1],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailScreen.routeName,
+                            arguments: productList![2],
+                          );
+                        },
+                        child: ProductCardHorizontal(
+                          product: productList![2],
+                        ),
+                      ),
+                    ],
+                  ))
       ],
     );
-
   }
 }
-
-
-
-
-
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../components/declarations.dart';
 import '../screens/User/category_deal_screen.dart';
@@ -34,7 +35,7 @@ class TopCategories extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 2,),
-                  Text(Declarations.catImages[index]["title"]!)
+                  Text(getName(Declarations.catImages[index]['title']!, context))
                 ],
               ),
             );
@@ -44,5 +45,24 @@ class TopCategories extends StatelessWidget {
 
 
     );
+  }
+
+  String getName(String theName,BuildContext context) {
+    switch(theName) {
+      case "Mobile":
+        return AppLocalizations.of(context)!.mobiles;
+      case "Appliance":
+        return AppLocalizations.of(context)!.appliances;
+      case "Fashion":
+        return AppLocalizations.of(context)!.fashion;
+      case "Essential":
+        return AppLocalizations.of(context)!.essentials;
+      case "Books":
+        return AppLocalizations.of(context)!.books;
+      case "Computer":
+        return AppLocalizations.of(context)!.computers;
+      default:
+        return "";
+    }
   }
 }

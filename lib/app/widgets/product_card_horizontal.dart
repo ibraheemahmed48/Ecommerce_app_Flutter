@@ -74,10 +74,10 @@ class ProductCardHorizontal extends StatelessWidget {
               Container(
                 width: 235,
                 padding: const EdgeInsets.only(left: 10, top: 5),
-                child: Text(
+                child: const Text(
                   "In Stock",
                   //AppLocalizations.of(context)!.inStock,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.teal,
                   ),
                   maxLines: 2,

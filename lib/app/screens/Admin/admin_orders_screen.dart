@@ -102,8 +102,10 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(1000),
-                  child: Image.network(
-                    image,
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/images/logo.png',
+                    image:  image,
+                    fit: BoxFit.contain,
                     width: 30,
                   ),
                 ),

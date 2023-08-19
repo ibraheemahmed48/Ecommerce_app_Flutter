@@ -1,19 +1,25 @@
+import 'package:ecommerce_app/app/models/language.dart';
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/declarations.dart';
+import '../../../main.dart';
 import '../../widgets/addresbar.dart';
 import '../../widgets/carousel_image.dart';
 import '../../widgets/deal_of_day.dart';
 import '../../widgets/top_categories.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static const String routeName ='/home';
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   void searchForProduct(String text){
     Navigator.pushNamed(context, SearchScreen.routeName,arguments: text);
   }
@@ -64,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 1
                             )
                         ),
-                        hintText: "Search..."
+                        hintText: AppLocalizations.of(context)!.searchInMySouq
 
                       ),
                     ),
@@ -72,33 +78,70 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(left: 15,right: 15),
                 color: Colors.transparent,
                 height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.mic,color: Colors.black,size: 25,),
-              )
+                margin: const EdgeInsets.symmetric(horizontal: 2),
+                child: DropdownButton<Language>(
+                  underline: const SizedBox(),
+                  icon: const Icon(
+                    Icons.language,
+                    color: Colors.white,
+                  ),
+                  onChanged: (Language? language)  {
+                    setState(() {
 
+                    });
+                    if (language != null) {
+                      MyApp.setLocale(context, Locale(language.languageCode, ''));
+                    }
+                  },
+                  items: Language.languageList()
+                      .map<DropdownMenuItem<Language>>(
+                        (e) => DropdownMenuItem<Language>(
+                      value: e,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text(
+                            e.flag,
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ).toList(),
+                ),
+              )
             ],
+
+
+
           ),
         ),
       ),
-      body:const SingleChildScrollView(
-        child: Column(
-          children: [
-            AddressBar(),
-            SizedBox(height: 10,),
-            TopCategories(),
-            SizedBox(height: 10,),
-            CarouselImage(),
-            SizedBox(height: 10,),
-            DealOfDay(),
+      body:const Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    AddressBar(),       //40
+                    SizedBox(height: 10,),     //10
+                    TopCategories(),               //65
+                    SizedBox(height: 10,),          //10
+                    CarouselImage(),                 //200
+                    SizedBox(height: 10,),             //10
+                  ],
+                ),
+
+                DealOfDay(),
+              ],
+            ),
+          ),
 
 
-
-
-          ],
-        ),
+        ],
       ),
 
     );

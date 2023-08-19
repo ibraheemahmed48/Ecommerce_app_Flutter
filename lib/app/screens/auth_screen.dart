@@ -50,7 +50,6 @@ class _AuthScreenState extends State<AuthScreen> {
     _passwordlText.dispose();
   }
   void singUp(){
-    print("**************************singUp");
     authService.singUpUser(
         email: _emailText.text,
         password: _passwordlText.text,
@@ -58,7 +57,6 @@ class _AuthScreenState extends State<AuthScreen> {
         context: context);
   }
   void singIn(){
-    print("**************************singIp");
     authService.singInUser(
         email: _emailText.text,
         password: _passwordlText.text,
@@ -89,24 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   height: 50,
                 ),
 
-                //
-                // ListTile(
-                //   tileColor: _auth == AuthEnum.signup ?
-                //   Declarations.backgroundColor:Declarations.greyBackgroundColor ,
-                //   title: const Text("New Customer",style: TextStyle(fontWeight: FontWeight.bold),),
-                //   leading: Radio(
-                //       value: AuthEnum.signup,
-                //       activeColor: Declarations.secondaryColor,
-                //       groupValue:_auth,
-                //       onChanged:(AuthEnum? val){
-                //         setState(() {
-                //           _auth = val ?? AuthEnum.signup;
-                //         });
-                //
-                //       }
-                //   ),
-                //
-                // ),
+
                 if (_auth == AuthEnum.signup)
                   Container(
                     padding: const EdgeInsets.all(8),
@@ -118,6 +99,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustemText(
                             controller: _namelText,
                             hintText: 'Name',
+                            icon: Icons.person,
+
                           ),
                           const SizedBox(
                             height: 10,
@@ -125,6 +108,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustemText(
                             controller: _emailText,
                             hintText: 'Email',
+                            icon: Icons.email_outlined,
                           ),
                           const SizedBox(
                             height: 10,
@@ -132,6 +116,9 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustemText(
                             controller: _passwordlText,
                             hintText: 'Password',
+                            icon: Icons.password,
+                            isPassword: true,
+
                           ),
                           const SizedBox(
                             height: 20,
@@ -142,7 +129,6 @@ class _AuthScreenState extends State<AuthScreen> {
                               if(_signUpKey.currentState!.validate()){
                                 singUp();
                               }else{
-                                print("**************************else");
                                 showSnackBar(context, "Eroor");
                               }
 
@@ -155,23 +141,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
 
-                // ListTile(
-                //   tileColor: _auth == AuthEnum.signin ?
-                //   Declarations.backgroundColor:Declarations.greyBackgroundColor ,
-                //   title: const Text("HAVE ACCOUNT",style: TextStyle(fontWeight: FontWeight.bold),),
-                //   leading: Radio(
-                //       value: AuthEnum.signin,
-                //       activeColor: Declarations.secondaryColor,
-                //       groupValue:_auth,
-                //       onChanged:(AuthEnum? val){
-                //         setState(() {
-                //           _auth = val ?? AuthEnum.signin;
-                //         });
-                //
-                //       }
-                //   ),
-                //
-                // ),
+
                 if (_auth == AuthEnum.signin)
                   Container(
                     padding: const EdgeInsets.all(8),
@@ -183,6 +153,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustemText(
                             controller: _emailText,
                             hintText: 'Email',
+                            icon: Icons.email_outlined,
                           ),
                           const SizedBox(
                             height: 10,
@@ -190,13 +161,16 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustemText(
                             controller: _passwordlText,
                             hintText: 'Password',
+                            icon: Icons.password,
+                            isPassword: true,
+
+
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           CustomButton(
                             onTap: () {
-                              print("**************************onTap");
                               if(_signInKey.currentState!.validate()){
                                 singIn();
                               }

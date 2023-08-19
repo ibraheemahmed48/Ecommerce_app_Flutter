@@ -4,7 +4,7 @@ import 'package:ecommerce_app/components/declarations.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
   runApp(MultiProvider(
       providers: [
@@ -18,11 +18,20 @@ class MyApp extends StatefulWidget {
   @override
 
   State<MyApp> createState() => _MyAppState();
+  static void setLocale(BuildContext context , Locale newlocal){
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newlocal);
+  }
+
 }
 
 class _MyAppState extends State<MyApp> {
-
-  @override
+  Locale? _locale;
+  setLocale(Locale locale){
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +44,9 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Declarations.backgroundColor
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+      locale: _locale,
       home:const SplashScreen()
 
     );
