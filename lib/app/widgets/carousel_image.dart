@@ -11,13 +11,27 @@ class CarouselImage extends StatelessWidget {
       CarouselSlider(
         items: Declarations.carouselImages.map((e)  {
           return Builder(
-            builder: (BuildContext context) => FadeInImage.assetNetwork(
-              placeholder: 'assets/images/logo.png',
-              image: e,
-              fit: BoxFit.cover,
-              height: 200,
+            builder: (BuildContext context) =>
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: Colors.black12,
+                      borderRadius: BorderRadius.circular(20),
 
-            ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: FadeInImage.assetNetwork(
+                        placeholder: 'assets/images/logo.png',
+                        image: e,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
+
+                )
 
         );
         }).toList(),
@@ -29,3 +43,12 @@ class CarouselImage extends StatelessWidget {
       );
   }
 }
+/*
+FadeInImage.assetNetwork(
+              placeholder: 'assets/images/logo.png',
+              image: e,
+              fit: BoxFit.cover,
+              height: 200,
+
+            ),
+* */

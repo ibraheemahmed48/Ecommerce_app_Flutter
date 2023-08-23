@@ -4,7 +4,6 @@ import '../../../components/declarations.dart';
 import '../../../providers/user_provider.dart';
 import '../../widgets/addresbar.dart';
 import '../../widgets/cart_subtotal.dart';
-import '../../widgets/loader.dart';
 import '../../widgets/product_card_cart.dart';
 import 'address_screen.dart';
 
@@ -33,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Your Shopping Cart',
+              'Shopping Cart',
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             )

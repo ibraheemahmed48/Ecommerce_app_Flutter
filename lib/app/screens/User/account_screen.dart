@@ -9,46 +9,26 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-          child: AppBar(
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: Declarations.appBarGradient
-              ),
-            ),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Image.asset("assets/images/logo.png",
-                  width: 95,
-                    height: 45,
-
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 15,right: 15),
-                  child: const Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 15),
-                        child: Icon(Icons.notifications),
-                      ),
-                      Icon(Icons.search),
-                    ],
-                  ),
-                )
-
-              ],
-            ),
-          ),
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration:
+          const BoxDecoration(gradient: Declarations.appBarGradient),
+        ),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Account',
+              style:
+              TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            )
+          ],
+        ),
       ),
       body:  const SingleChildScrollView(
         child:  Column(
           children: [
-            BelowAppBar(),
+            // BelowAppBar(),
             SizedBox(
               height: 10,
             ),

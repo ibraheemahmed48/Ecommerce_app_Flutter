@@ -2,6 +2,7 @@ import 'package:ecommerce_app/app/screens/Admin/add_product.dart';
 import 'package:ecommerce_app/app/screens/Admin/admin_screen.dart';
 import 'package:ecommerce_app/app/screens/User/address_screen.dart';
 import 'package:ecommerce_app/app/screens/User/category_deal_screen.dart';
+import 'package:ecommerce_app/app/screens/User/change_language_screen.dart';
 import 'package:ecommerce_app/app/screens/User/order_details_screen.dart';
 import 'package:ecommerce_app/app/screens/User/product_details_screen.dart';
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
@@ -22,6 +23,9 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
           settings: routeSettings, builder: (_) => const AuthScreen());
 
+    case ChangeLanguage.routeName:
+      return MaterialPageRoute(
+          settings: routeSettings, builder: (_) => const ChangeLanguage());
 
     case AdminScreen.routeName:
       return MaterialPageRoute(

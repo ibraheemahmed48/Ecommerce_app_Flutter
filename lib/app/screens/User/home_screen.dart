@@ -2,12 +2,13 @@ import 'package:ecommerce_app/app/models/language.dart';
 import 'package:ecommerce_app/app/screens/User/search_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/declarations.dart';
-import '../../../main.dart';
-import '../../widgets/addresbar.dart';
+
 import '../../widgets/carousel_image.dart';
 import '../../widgets/deal_of_day.dart';
 import '../../widgets/top_categories.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'change_language_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,35 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.transparent,
                 height: 42,
                 margin: const EdgeInsets.symmetric(horizontal: 2),
-                child: DropdownButton<Language>(
-                  underline: const SizedBox(),
-                  icon: const Icon(
-                    Icons.language,
-                    color: Colors.white,
-                  ),
-                  onChanged: (Language? language)  {
-                    setState(() {
-
-                    });
-                    if (language != null) {
-                      MyApp.setLocale(context, Locale(language.languageCode, ''));
-                    }
+                child: IconButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.pushNamed(context,  ChangeLanguage.routeName);
                   },
-                  items: Language.languageList()
-                      .map<DropdownMenuItem<Language>>(
-                        (e) => DropdownMenuItem<Language>(
-                      value: e,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text(
-                            e.flag,
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ).toList(),
+                  icon: Icon(  Icons.language,),
                 ),
               )
             ],
@@ -126,12 +104,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Column(
                   children: [
-                    AddressBar(),       //40
-                    SizedBox(height: 10,),     //10
+                    //AddressBar(),       //40
+                    //SizedBox(height: 10,),     //10
                     TopCategories(),               //65
-                    SizedBox(height: 10,),          //10
                     CarouselImage(),                 //200
-                    SizedBox(height: 10,),             //10
                   ],
                 ),
 

@@ -1,4 +1,5 @@
 class Language {
+  static String? languageState;
   final int id;
   final String flag;
   final String name;
@@ -23,3 +24,4 @@ class Language {
     ];
   }
 }
+

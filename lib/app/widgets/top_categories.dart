@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../components/custom_text_styles.dart';
 import '../../components/declarations.dart';
 import '../screens/User/category_deal_screen.dart';
 class TopCategories extends StatelessWidget {
@@ -12,31 +13,39 @@ class TopCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
-      height: 65,
+      height: 50,
       
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-          itemExtent:75 ,
+          //itemExtent:120 ,
           itemCount: Declarations.catImages.length,
           itemBuilder: (context , index){
             return GestureDetector(
               onTap: (){
                 topCategories(context , Declarations.catImages[index]["title"]!);
-
               },
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Image.asset(Declarations.catImages[index]["image"]!,
-                    fit: BoxFit.cover,
-                      height: 40,
-                      width: 40,
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Container(
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(10)
                   ),
-                  const SizedBox(height: 2,),
-                  Text(getName(Declarations.catImages[index]['title']!, context))
-                ],
+                  padding: const EdgeInsets.all(0),
+                    child: Center(
+                        child: Text(
+                            getName(Declarations.catImages[index]['title']!, context),
+                          overflow:TextOverflow.ellipsis,
+                          style: CustomStyles.getStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              locale:AppLocalizations.of(context)!.localeName
+                          ),
+                        )
+                    )
+                ),
               ),
             );
 

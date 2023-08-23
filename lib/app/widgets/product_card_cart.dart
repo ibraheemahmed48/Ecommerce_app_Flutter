@@ -53,14 +53,32 @@ class _ProductCardCartState extends State<ProductCardCart> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(2),
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/images/logo.png',
-                  image:  product.images[0],
-                  fit: BoxFit.contain,
-                  height: 100,
-                  width: 100,
+                child: Container(
+
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(20),
+
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/images/logo.png',
+                      image:  product.images[0],
+                      fit: BoxFit.contain,
+                      height: 120,
+                      width: 100,
+                    ),
+                  ),
                 ),
               ),
+
+
+
+
+
+
+
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Column(

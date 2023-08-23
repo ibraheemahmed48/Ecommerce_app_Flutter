@@ -48,15 +48,29 @@ class _ProductCardState extends State<ProductCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(5),
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
                           child: FadeInImage.assetNetwork(
                             placeholder: 'assets/images/logo.png',
                             image:  widget.product.images[0],
-                            fit: BoxFit.fitHeight,
+                            fit: BoxFit.contain,
                           ),
-                        )
+                        ),
+                      ),
                     ),
+
+
+
+
+
                     const SizedBox(
                       height: 10,
                     ),

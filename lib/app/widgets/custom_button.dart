@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
       ), icon:Icon(icon,
       size: 25,
 
-    ) , label: Text(text,style: TextStyle(
+    ) , label: Text(text,style: const TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 18
     ),),

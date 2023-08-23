@@ -5,6 +5,9 @@ import 'package:ecommerce_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'app/models/language.dart';
+
 void main() {
   runApp(MultiProvider(
       providers: [
@@ -30,7 +33,9 @@ class _MyAppState extends State<MyApp> {
   setLocale(Locale locale){
     setState(() {
       _locale = locale;
+
     });
+
   }
 
   @override
